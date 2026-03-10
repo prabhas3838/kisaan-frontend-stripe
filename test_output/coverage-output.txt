@@ -1,0 +1,311 @@
+
+> digital-marketplace@1.0.0 test:coverage
+> jest --coverage --coverageReporters=html --coverageReporters=text
+
+PASS __tests__/integration/auth-flow.test.ts
+  Authentication Flow - Integration Tests
+    ✓ completes full authentication flow: Login → OTP → Dashboard (33 ms)
+    ✓ integrates with backend auth API endpoint (14 ms)
+    ✓ handles backend authentication errors and propagates to UI (4 ms)
+
+PASS __tests__/integration/i18n.test.ts
+  i18n Integration Tests
+    ✓ integrates translation system across components (23 ms)
+    ✓ verifies i18n module is configured correctly (3 ms)
+
+PASS __tests__/regression/api-contract.test.ts
+  API Contract Regression Tests
+    ✓ maintains /send-otp API contract structure (28 ms)
+    ✓ regression: API endpoints have not changed (4 ms)
+    ✓ regression: request headers remain consistent (4 ms)
+
+PASS __tests__/performance/api-response-times.test.ts
+  Performance Tests - API Response Times
+    ✓ measures OTP API response time (80 ms)
+    ✓ tracks concurrent API calls performance (4 ms)
+    ✓ monitors data loading performance metrics (5 ms)
+    ✓ benchmarks authentication flow performance (3 ms)
+  Performance Tests - Data Loading
+    ✓ measures list rendering performance with large datasets (5 ms)
+    ✓ benchmarks component render time (3 ms)
+
+PASS __tests__/integration/navigation.test.ts
+  Navigation Integration Tests
+    ✓ documents navigation module interactions (19 ms)
+    ✓ verifies navigation flow for farmer role (4 ms)
+    ✓ verifies navigation flow for buyer role (2 ms)
+
+FAIL __tests__/functional/BuyerDashboard.test.tsx (10.372 s)
+  Buyer Dashboard - Functional Tests
+    ✓ renders buyer dashboard with title (4872 ms)
+    ✓ displays welcome message for buyer (19 ms)
+    ✕ renders with correct background color (20 ms)
+
+  ● Buyer Dashboard - Functional Tests › renders with correct background color
+
+    Unable to find an element with testID: buyer-dashboard
+
+    [
+      [36m<MockScreen />[39m,
+      [36m<View>[39m
+        [36m<View>[39m
+          [36m<RCTScrollView>[39m
+            [36m<View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.dashboard[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.browse_crops[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.live_auctions[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.my_bids[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.market_insights[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+            [36m</View>[39m
+          [36m</RCTScrollView>[39m
+          [36m<View>[39m
+            [36m<View[39m
+              [33maccessible[39m=[32m{true}[39m
+            [36m>[39m
+              [36m<Ionicons />[39m
+            [36m</View>[39m
+          [36m</View>[39m
+        [36m</View>[39m
+        [36m<RCTScrollView>[39m
+          [36m<View>[39m
+            [36m<Text>[39m
+              [0mbuyer.dashboard_title[0m
+            [36m</Text>[39m
+            [36m<View>[39m
+              [36m<Text>[39m
+                [0mbuyer.welcome_msg[0m
+              [36m</Text>[39m
+              [36m<Text>[39m
+                [0mbuyer.welcome_sub[0m
+              [36m</Text>[39m
+            [36m</View>[39m
+          [36m</View>[39m
+        [36m</RCTScrollView>[39m
+      [36m</View>[39m,
+    ]
+
+      21 |
+      22 |         // The container should have a specific background color
+    > 23 |         const container = getByTestId('buyer-dashboard') || { props: { style: { backgroundColor: '#f5f8fa' } } };
+         |                           ^
+      24 |         // This is a basic test to ensure the component renders
+      25 |         expect(container).toBeTruthy();
+      26 |     });
+
+      at Object.getByTestId (__tests__/functional/BuyerDashboard.test.tsx:23:27)
+
+PASS __tests__/regression/baseline-snapshots.test.tsx (12.111 s)
+  Baseline Snapshot Tests - Regression
+    ✓ matches Login screen snapshot (4370 ms)
+    ✓ matches Farmer Dashboard snapshot (2239 ms)
+    ✓ matches Buyer Dashboard snapshot (19 ms)
+    ✓ verifies Login screen structure has not changed (16 ms)
+    ✓ regression: farmer dashboard maintains all action cards (28 ms)
+
+FAIL __tests__/functional/FarmerDashboard.test.tsx (12.246 s)
+  Farmer Dashboard - Functional Tests
+    ✓ renders dashboard with title (6646 ms)
+    ✓ displays welcome message and subtitle (21 ms)
+    ✓ shows all quick action cards (24 ms)
+    ✕ navigates to add-crop screen when action card clicked (29 ms)
+    ✕ navigates to my-listings screen when action card clicked (32 ms)
+    ✕ navigates to mandi-prices screen when action card clicked (21 ms)
+
+  ● Farmer Dashboard - Functional Tests › navigates to add-crop screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/add-crop"
+
+    Number of calls: 0
+
+      37 |         fireEvent.press(addCropButton);
+      38 |
+    > 39 |         expect(mockRouter.push).toHaveBeenCalledWith('/add-crop');
+         |                                 ^
+      40 |     });
+      41 |
+      42 |     it('navigates to my-listings screen when action card clicked', () => {
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:39:33)
+
+  ● Farmer Dashboard - Functional Tests › navigates to my-listings screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/my-listings"
+
+    Number of calls: 0
+
+      47 |         fireEvent.press(myListingsButton);
+      48 |
+    > 49 |         expect(mockRouter.push).toHaveBeenCalledWith('/my-listings');
+         |                                 ^
+      50 |     });
+      51 |
+      52 |     it('navigates to mandi-prices screen when action card clicked', () => {
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:49:33)
+
+  ● Farmer Dashboard - Functional Tests › navigates to mandi-prices screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/mandi-prices"
+
+    Number of calls: 0
+
+      57 |         fireEvent.press(mandiPricesButton);
+      58 |
+    > 59 |         expect(mockRouter.push).toHaveBeenCalledWith('/mandi-prices');
+         |                                 ^
+      60 |     });
+      61 | });
+      62 |
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:59:33)
+
+FAIL __tests__/ui/layout-rendering.test.tsx (12.285 s)
+  UI Layout and Rendering Tests
+    Login Screen UI
+      ✓ renders all UI components correctly (4380 ms)
+      ✓ renders phone input with country code (16 ms)
+      ✓ displays branding elements correctly (15 ms)
+    Dashboard UI Layout
+      ✓ farmer dashboard renders with proper structure (2214 ms)
+      ✓ buyer dashboard renders with proper structure (19 ms)
+    Component Rendering Tests
+      ✓ all screens render without errors (47 ms)
+      ✓ navigation components are integrated correctly (36 ms)
+    Responsive Layout
+      ✕ login screen adapts to different container sizes (9 ms)
+      ✓ dashboard layouts are scrollable (36 ms)
+
+  ● UI Layout and Rendering Tests › Responsive Layout › login screen adapts to different container sizes
+
+    'container' property has been renamed to 'UNSAFE_root'.
+
+    Consider using 'root' property which returns root host element.
+
+      87 |     describe('Responsive Layout', () => {
+      88 |         it('login screen adapts to different container sizes', () => {
+    > 89 |             const { container } = render(<LoginScreen />);
+         |                     ^
+      90 |             expect(container).toBeTruthy();
+      91 |         });
+      92 |
+
+      at Object.get (node_modules/@testing-library/react-native/src/render.tsx:150:13)
+      at Object.container (__tests__/ui/layout-rendering.test.tsx:89:21)
+
+FAIL __tests__/functional/Login.test.tsx (13.883 s)
+  Login Screen - Functional Tests
+    ✓ renders login screen with all elements (4386 ms)
+    ✓ validates phone number format correctly (55 ms)
+    ✓ accepts only 10-digit numeric phone numbers (33 ms)
+    ✓ sends OTP request on valid phone submission (2832 ms)
+    ✓ shows loading state while sending OTP (20 ms)
+    ✓ handles API error gracefully (69 ms)
+    ✕ disables continue button during API call (1035 ms)
+
+  ● Login Screen - Functional Tests › disables continue button during API call
+
+    Unable to find node on an unmounted component.
+
+      124 |
+      125 |         // Button should be disabled during loading
+    > 126 |         await waitFor(() => {
+          |                      ^
+      127 |             expect(continueButton.props.disabled).toBe(true);
+      128 |         });
+      129 |     });
+
+      at Object.<anonymous> (__tests__/functional/Login.test.tsx:126:22)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+      at node_modules/@babel/runtime/helpers/asyncToGenerator.js:22:7
+      at Object.<anonymous> (node_modules/@babel/runtime/helpers/asyncToGenerator.js:14:12)
+
+---------------------------|---------|----------|---------|---------|-------------------
+File                       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------|---------|----------|---------|---------|-------------------
+All files                  |   13.46 |     8.02 |    9.85 |   14.45 |                   
+ app                       |   12.21 |     7.14 |    9.09 |   13.73 |                   
+  _layout.tsx              |       0 |      100 |       0 |       0 | 6                 
+  add-crop.tsx             |       0 |      100 |       0 |       0 | 5                 
+  browse-crops.tsx         |       0 |      100 |       0 |       0 | 7-21              
+  buyer-dashboard.tsx      |     100 |      100 |     100 |     100 |                   
+  farmer-dashboard.tsx     |     100 |      100 |     100 |     100 |                   
+  index.tsx                |       0 |      100 |       0 |       0 | 4                 
+  live-auctions.tsx        |       0 |      100 |       0 |       0 | 10-25             
+  login.tsx                |   91.66 |    66.66 |      75 |   91.66 | 56,140            
+  mandi-prices.tsx         |       0 |      100 |       0 |       0 | 5                 
+  market-insights.tsx      |       0 |      100 |       0 |       0 | 7-21              
+  marketplace.tsx          |       0 |        0 |       0 |       0 | 16-803            
+  my-bids.tsx              |       0 |      100 |       0 |       0 | 7-21              
+  my-listings.tsx          |       0 |      100 |       0 |       0 | 5                 
+  signin.tsx               |       0 |      100 |       0 |       0 | 5-12              
+ app/(tabs)                |       0 |        0 |       0 |       0 |                   
+  _layout.tsx              |       0 |        0 |       0 |       0 | 10-30             
+  explore.tsx              |       0 |      100 |       0 |       0 | 13-101            
+  index.tsx                |       0 |      100 |       0 |       0 | 11-81             
+ components                |       0 |        0 |       0 |       0 |                   
+  external-link.tsx        |       0 |        0 |       0 |       0 | 8-18              
+  haptic-tab.tsx           |       0 |        0 |       0 |       0 | 6-14              
+  hello-wave.tsx           |       0 |      100 |       0 |       0 | 4                 
+  parallax-scroll-view.tsx |       0 |        0 |       0 |       0 | 14-65             
+  themed-text.tsx          |       0 |        0 |       0 |       0 | 18-36             
+  themed-view.tsx          |       0 |      100 |       0 |       0 | 11-13             
+ components/navigation     |   25.71 |    28.57 |   13.04 |   25.71 |                   
+  NavBuyer.tsx             |      25 |       50 |      10 |      25 | 27-105            
+  NavFarmer.tsx            |   26.31 |       20 |   15.38 |   26.31 | 26-67,96          
+ components/notifications  |   66.66 |       75 |      50 |      70 |                   
+  NotificationBell.tsx     |   66.66 |       75 |      50 |      70 | 21-22,41          
+ components/ui             |       0 |        0 |       0 |       0 |                   
+  collapsible.tsx          |       0 |        0 |       0 |       0 | 11-35             
+  icon-symbol.ios.tsx      |       0 |        0 |       0 |       0 | 17                
+  icon-symbol.tsx          |       0 |        0 |       0 |       0 | 16-40             
+ hooks                     |       0 |        0 |       0 |       0 |                   
+  use-color-scheme.ts      |       0 |        0 |       0 |       0 |                   
+  use-color-scheme.web.ts  |       0 |        0 |       0 |       0 | 8-20              
+  use-theme-color.ts       |       0 |        0 |       0 |       0 | 13-19             
+---------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for statements (70%) not met: 13.46%
+Jest: "global" coverage threshold for branches (60%) not met: 8.02%
+Jest: "global" coverage threshold for lines (70%) not met: 14.45%
+Jest: "global" coverage threshold for functions (70%) not met: 9.85%
+Test Suites: 4 failed, 6 passed, 10 total
+Tests:       6 failed, 41 passed, 47 total
+Snapshots:   3 passed, 3 total
+Time:        19.806 s
+Ran all test suites.

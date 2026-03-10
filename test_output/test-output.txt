@@ -1,0 +1,210 @@
+
+> digital-marketplace@1.0.0 test
+> jest
+
+PASS __tests__/integration/auth-flow.test.ts
+  Authentication Flow - Integration Tests
+    ✓ completes full authentication flow: Login → OTP → Dashboard (18 ms)
+    ✓ integrates with backend auth API endpoint (5 ms)
+    ✓ handles backend authentication errors and propagates to UI (3 ms)
+
+PASS __tests__/regression/api-contract.test.ts
+  API Contract Regression Tests
+    ✓ maintains /send-otp API contract structure (21 ms)
+    ✓ regression: API endpoints have not changed (4 ms)
+    ✓ regression: request headers remain consistent (5 ms)
+
+PASS __tests__/integration/i18n.test.ts
+  i18n Integration Tests
+    ✓ integrates translation system across components (13 ms)
+    ✓ verifies i18n module is configured correctly (2 ms)
+
+PASS __tests__/performance/api-response-times.test.ts
+  Performance Tests - API Response Times
+    ✓ measures OTP API response time (67 ms)
+    ✓ tracks concurrent API calls performance (4 ms)
+    ✓ monitors data loading performance metrics (4 ms)
+    ✓ benchmarks authentication flow performance (2 ms)
+  Performance Tests - Data Loading
+    ✓ measures list rendering performance with large datasets (4 ms)
+    ✓ benchmarks component render time (3 ms)
+
+PASS __tests__/integration/navigation.test.ts
+  Navigation Integration Tests
+    ✓ documents navigation module interactions (16 ms)
+    ✓ verifies navigation flow for farmer role (4 ms)
+    ✓ verifies navigation flow for buyer role (2 ms)
+
+FAIL __tests__/functional/BuyerDashboard.test.tsx
+  ● Test suite failed to run
+
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation, specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    /home/akash-krishnan/Documents/sriram/kisan-saathi-mobile/node_modules/expo-font/build/index.js:1
+    export * from './Font';
+    ^^^^^^
+
+    SyntaxError: Unexpected token 'export'
+
+       9 | import { router } from "expo-router";
+      10 | import { useTranslation } from "react-i18next";
+    > 11 | import { Ionicons } from "@expo/vector-icons";
+         | ^
+      12 |
+      13 | export default function NavBuyer() {
+      14 |     const { t } = useTranslation();
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1318:40)
+      at Object.require (node_modules/@expo/vector-icons/src/createIconSet.tsx:1:1)
+      at Object.require (node_modules/@expo/vector-icons/src/AntDesign.ts:3:1)
+      at Object.require (node_modules/@expo/vector-icons/src/Icons.ts:3:1)
+      at Object.require (components/navigation/NavBuyer.tsx:11:1)
+      at Object.require (app/buyer-dashboard.tsx:4:1)
+      at Object.require (__tests__/functional/BuyerDashboard.test.tsx:3:1)
+
+FAIL __tests__/functional/FarmerDashboard.test.tsx
+  ● Test suite failed to run
+
+    Cannot find module 'react-native-svg' from 'node_modules/lucide-react-native/dist/cjs/createLucideIcon.js'
+
+    Require stack:
+      node_modules/lucide-react-native/dist/cjs/createLucideIcon.js
+      node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js
+      node_modules/lucide-react-native/dist/cjs/lucide-react-native.js
+      components/notifications/NotificationBell.tsx
+      components/navigation/NavFarmer.tsx
+      app/farmer-dashboard.tsx
+      __tests__/functional/FarmerDashboard.test.tsx
+
+       7 |   StyleSheet,
+       8 | } from "react-native";
+    >  9 | import { Bell } from "lucide-react-native";
+         | ^
+      10 |
+      11 | export default function NotificationBell() {
+      12 |   const [visible, setVisible] = useState(false);
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/createLucideIcon.js:16:17)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js:10:24)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/lucide-react-native.js:10:18)
+      at Object.require (components/notifications/NotificationBell.tsx:9:1)
+      at Object.require (components/navigation/NavFarmer.tsx:2:1)
+      at Object.require (app/farmer-dashboard.tsx:5:1)
+      at Object.require (__tests__/functional/FarmerDashboard.test.tsx:3:1)
+
+FAIL __tests__/regression/baseline-snapshots.test.tsx
+  ● Test suite failed to run
+
+    Cannot find module 'react-native-svg' from 'node_modules/lucide-react-native/dist/cjs/createLucideIcon.js'
+
+    Require stack:
+      node_modules/lucide-react-native/dist/cjs/createLucideIcon.js
+      node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js
+      node_modules/lucide-react-native/dist/cjs/lucide-react-native.js
+      components/notifications/NotificationBell.tsx
+      components/navigation/NavFarmer.tsx
+      app/farmer-dashboard.tsx
+      __tests__/regression/baseline-snapshots.test.tsx
+
+       7 |   StyleSheet,
+       8 | } from "react-native";
+    >  9 | import { Bell } from "lucide-react-native";
+         | ^
+      10 |
+      11 | export default function NotificationBell() {
+      12 |   const [visible, setVisible] = useState(false);
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/createLucideIcon.js:16:17)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js:10:24)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/lucide-react-native.js:10:18)
+      at Object.require (components/notifications/NotificationBell.tsx:9:1)
+      at Object.require (components/navigation/NavFarmer.tsx:2:1)
+      at Object.require (app/farmer-dashboard.tsx:5:1)
+      at Object.require (__tests__/regression/baseline-snapshots.test.tsx:4:1)
+
+FAIL __tests__/ui/layout-rendering.test.tsx
+  ● Test suite failed to run
+
+    Cannot find module 'react-native-svg' from 'node_modules/lucide-react-native/dist/cjs/createLucideIcon.js'
+
+    Require stack:
+      node_modules/lucide-react-native/dist/cjs/createLucideIcon.js
+      node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js
+      node_modules/lucide-react-native/dist/cjs/lucide-react-native.js
+      components/notifications/NotificationBell.tsx
+      components/navigation/NavFarmer.tsx
+      app/farmer-dashboard.tsx
+      __tests__/ui/layout-rendering.test.tsx
+
+       7 |   StyleSheet,
+       8 | } from "react-native";
+    >  9 | import { Bell } from "lucide-react-native";
+         | ^
+      10 |
+      11 | export default function NotificationBell() {
+      12 |   const [visible, setVisible] = useState(false);
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:863:11)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/createLucideIcon.js:16:17)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/icons/a-arrow-down.js:10:24)
+      at Object.<anonymous> (node_modules/lucide-react-native/dist/cjs/lucide-react-native.js:10:18)
+      at Object.require (components/notifications/NotificationBell.tsx:9:1)
+      at Object.require (components/navigation/NavFarmer.tsx:2:1)
+      at Object.require (app/farmer-dashboard.tsx:5:1)
+      at Object.require (__tests__/ui/layout-rendering.test.tsx:4:1)
+
+FAIL __tests__/functional/Login.test.tsx (12.038 s)
+  Login Screen - Functional Tests
+    ✓ renders login screen with all elements (4262 ms)
+    ✓ validates phone number format correctly (30 ms)
+    ✓ accepts only 10-digit numeric phone numbers (15 ms)
+    ✓ sends OTP request on valid phone submission (2099 ms)
+    ✓ shows loading state while sending OTP (33 ms)
+    ✓ handles API error gracefully (72 ms)
+    ✕ disables continue button during API call (1031 ms)
+
+  ● Login Screen - Functional Tests › disables continue button during API call
+
+    Unable to find node on an unmounted component.
+
+      124 |
+      125 |         // Button should be disabled during loading
+    > 126 |         await waitFor(() => {
+          |                      ^
+      127 |             expect(continueButton.props.disabled).toBe(true);
+      128 |         });
+      129 |     });
+
+      at Object.<anonymous> (__tests__/functional/Login.test.tsx:126:22)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+      at node_modules/@babel/runtime/helpers/asyncToGenerator.js:22:7
+      at Object.<anonymous> (node_modules/@babel/runtime/helpers/asyncToGenerator.js:14:12)
+
+Test Suites: 5 failed, 5 passed, 10 total
+Tests:       1 failed, 23 passed, 24 total
+Snapshots:   0 total
+Time:        12.939 s
+Ran all test suites.

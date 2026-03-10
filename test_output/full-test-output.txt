@@ -1,0 +1,263 @@
+
+> digital-marketplace@1.0.0 test
+> jest --verbose
+
+PASS __tests__/integration/auth-flow.test.ts
+  Authentication Flow - Integration Tests
+    ✓ completes full authentication flow: Login → OTP → Dashboard (20 ms)
+    ✓ integrates with backend auth API endpoint (5 ms)
+    ✓ handles backend authentication errors and propagates to UI (3 ms)
+
+PASS __tests__/integration/navigation.test.ts
+  Navigation Integration Tests
+    ✓ documents navigation module interactions (12 ms)
+    ✓ verifies navigation flow for farmer role (3 ms)
+    ✓ verifies navigation flow for buyer role (1 ms)
+
+PASS __tests__/regression/api-contract.test.ts
+  API Contract Regression Tests
+    ✓ maintains /send-otp API contract structure (18 ms)
+    ✓ regression: API endpoints have not changed (3 ms)
+    ✓ regression: request headers remain consistent (3 ms)
+
+PASS __tests__/integration/i18n.test.ts
+  i18n Integration Tests
+    ✓ integrates translation system across components (16 ms)
+    ✓ verifies i18n module is configured correctly (3 ms)
+
+PASS __tests__/performance/api-response-times.test.ts
+  Performance Tests - API Response Times
+    ✓ measures OTP API response time (71 ms)
+    ✓ tracks concurrent API calls performance (4 ms)
+    ✓ monitors data loading performance metrics (5 ms)
+    ✓ benchmarks authentication flow performance (2 ms)
+  Performance Tests - Data Loading
+    ✓ measures list rendering performance with large datasets (3 ms)
+    ✓ benchmarks component render time (2 ms)
+
+FAIL __tests__/functional/BuyerDashboard.test.tsx
+  Buyer Dashboard - Functional Tests
+    ✓ renders buyer dashboard with title (521 ms)
+    ✓ displays welcome message for buyer (17 ms)
+    ✕ renders with correct background color (19 ms)
+
+  ● Buyer Dashboard - Functional Tests › renders with correct background color
+
+    Unable to find an element with testID: buyer-dashboard
+
+    [
+      [36m<MockScreen />[39m,
+      [36m<View>[39m
+        [36m<View>[39m
+          [36m<RCTScrollView>[39m
+            [36m<View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.dashboard[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.browse_crops[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.live_auctions[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.my_bids[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+              [36m<View[39m
+                [33maccessible[39m=[32m{true}[39m
+              [36m>[39m
+                [36m<Text>[39m
+                  [0mnav_buyer.market_insights[0m
+                [36m</Text>[39m
+              [36m</View>[39m
+            [36m</View>[39m
+          [36m</RCTScrollView>[39m
+          [36m<View>[39m
+            [36m<View[39m
+              [33maccessible[39m=[32m{true}[39m
+            [36m>[39m
+              [36m<Ionicons />[39m
+            [36m</View>[39m
+          [36m</View>[39m
+        [36m</View>[39m
+        [36m<RCTScrollView>[39m
+          [36m<View>[39m
+            [36m<Text>[39m
+              [0mbuyer.dashboard_title[0m
+            [36m</Text>[39m
+            [36m<View>[39m
+              [36m<Text>[39m
+                [0mbuyer.welcome_msg[0m
+              [36m</Text>[39m
+              [36m<Text>[39m
+                [0mbuyer.welcome_sub[0m
+              [36m</Text>[39m
+            [36m</View>[39m
+          [36m</View>[39m
+        [36m</RCTScrollView>[39m
+      [36m</View>[39m,
+    ]
+
+      21 |
+      22 |         // The container should have a specific background color
+    > 23 |         const container = getByTestId('buyer-dashboard') || { props: { style: { backgroundColor: '#f5f8fa' } } };
+         |                           ^
+      24 |         // This is a basic test to ensure the component renders
+      25 |         expect(container).toBeTruthy();
+      26 |     });
+
+      at Object.getByTestId (__tests__/functional/BuyerDashboard.test.tsx:23:27)
+
+FAIL __tests__/functional/FarmerDashboard.test.tsx
+  Farmer Dashboard - Functional Tests
+    ✓ renders dashboard with title (581 ms)
+    ✓ displays welcome message and subtitle (26 ms)
+    ✓ shows all quick action cards (24 ms)
+    ✕ navigates to add-crop screen when action card clicked (25 ms)
+    ✕ navigates to my-listings screen when action card clicked (24 ms)
+    ✕ navigates to mandi-prices screen when action card clicked (22 ms)
+
+  ● Farmer Dashboard - Functional Tests › navigates to add-crop screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/add-crop"
+
+    Number of calls: 0
+
+      37 |         fireEvent.press(addCropButton);
+      38 |
+    > 39 |         expect(mockRouter.push).toHaveBeenCalledWith('/add-crop');
+         |                                 ^
+      40 |     });
+      41 |
+      42 |     it('navigates to my-listings screen when action card clicked', () => {
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:39:33)
+
+  ● Farmer Dashboard - Functional Tests › navigates to my-listings screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/my-listings"
+
+    Number of calls: 0
+
+      47 |         fireEvent.press(myListingsButton);
+      48 |
+    > 49 |         expect(mockRouter.push).toHaveBeenCalledWith('/my-listings');
+         |                                 ^
+      50 |     });
+      51 |
+      52 |     it('navigates to mandi-prices screen when action card clicked', () => {
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:49:33)
+
+  ● Farmer Dashboard - Functional Tests › navigates to mandi-prices screen when action card clicked
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: "/mandi-prices"
+
+    Number of calls: 0
+
+      57 |         fireEvent.press(mandiPricesButton);
+      58 |
+    > 59 |         expect(mockRouter.push).toHaveBeenCalledWith('/mandi-prices');
+         |                                 ^
+      60 |     });
+      61 | });
+      62 |
+
+      at Object.toHaveBeenCalledWith (__tests__/functional/FarmerDashboard.test.tsx:59:33)
+
+PASS __tests__/regression/baseline-snapshots.test.tsx
+  Baseline Snapshot Tests - Regression
+    ✓ matches Login screen snapshot (410 ms)
+    ✓ matches Farmer Dashboard snapshot (221 ms)
+    ✓ matches Buyer Dashboard snapshot (18 ms)
+    ✓ verifies Login screen structure has not changed (18 ms)
+    ✓ regression: farmer dashboard maintains all action cards (27 ms)
+
+FAIL __tests__/ui/layout-rendering.test.tsx
+  UI Layout and Rendering Tests
+    Login Screen UI
+      ✓ renders all UI components correctly (415 ms)
+      ✓ renders phone input with country code (13 ms)
+      ✓ displays branding elements correctly (13 ms)
+    Dashboard UI Layout
+      ✓ farmer dashboard renders with proper structure (233 ms)
+      ✓ buyer dashboard renders with proper structure (16 ms)
+    Component Rendering Tests
+      ✓ all screens render without errors (43 ms)
+      ✓ navigation components are integrated correctly (33 ms)
+    Responsive Layout
+      ✕ login screen adapts to different container sizes (7 ms)
+      ✓ dashboard layouts are scrollable (24 ms)
+
+  ● UI Layout and Rendering Tests › Responsive Layout › login screen adapts to different container sizes
+
+    'container' property has been renamed to 'UNSAFE_root'.
+
+    Consider using 'root' property which returns root host element.
+
+      87 |     describe('Responsive Layout', () => {
+      88 |         it('login screen adapts to different container sizes', () => {
+    > 89 |             const { container } = render(<LoginScreen />);
+         |                     ^
+      90 |             expect(container).toBeTruthy();
+      91 |         });
+      92 |
+
+      at Object.get (node_modules/@testing-library/react-native/src/render.tsx:150:13)
+      at Object.container (__tests__/ui/layout-rendering.test.tsx:89:21)
+
+FAIL __tests__/functional/Login.test.tsx
+  Login Screen - Functional Tests
+    ✓ renders login screen with all elements (484 ms)
+    ✓ validates phone number format correctly (38 ms)
+    ✓ accepts only 10-digit numeric phone numbers (19 ms)
+    ✓ sends OTP request on valid phone submission (116 ms)
+    ✓ shows loading state while sending OTP (34 ms)
+    ✓ handles API error gracefully (76 ms)
+    ✕ disables continue button during API call (1048 ms)
+
+  ● Login Screen - Functional Tests › disables continue button during API call
+
+    Unable to find node on an unmounted component.
+
+      124 |
+      125 |         // Button should be disabled during loading
+    > 126 |         await waitFor(() => {
+          |                      ^
+      127 |             expect(continueButton.props.disabled).toBe(true);
+      128 |         });
+      129 |     });
+
+      at Object.<anonymous> (__tests__/functional/Login.test.tsx:126:22)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+      at node_modules/@babel/runtime/helpers/asyncToGenerator.js:22:7
+      at Object.<anonymous> (node_modules/@babel/runtime/helpers/asyncToGenerator.js:14:12)
+
+Test Suites: 4 failed, 6 passed, 10 total
+Tests:       6 failed, 41 passed, 47 total
+Snapshots:   3 passed, 3 total
+Time:        3.832 s, estimated 10 s
+Ran all test suites.

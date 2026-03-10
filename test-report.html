@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard Test Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .report-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .metadata {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        .metadata p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .metadata strong {
+            display: inline-block;
+            width: 120px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .status-pass {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .summary {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border-left: 4px solid #4caf50;
+        }
+        .summary p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .summary strong {
+            display: inline-block;
+            width: 150px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .test-file-section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h1>Farmer Dashboard Test Report</h1>
+        
+        <div class="metadata">
+            <p><strong>Tool Used:</strong> Vitest (Node.js)</p>
+            <p><strong>Project:</strong> Kisan Saathi - Digital Marketplace</p>
+            <p><strong>Test Date:</strong> February 10, 2026</p>
+            <p><strong>Environment:</strong> Node.js with jsdom</p>
+        </div>
+
+        <!-- Add Crop Tests -->
+        <div class="test-file-section">
+            <h2>1. Add Crop Component Tests</h2>
+            
+            <div class="metadata">
+                <p><strong>File Tested:</strong> app/add-crop.tsx</p>
+                <p><strong>Test File:</strong> app/__tests__/add-crop.test.ts</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Description</th>
+                        <th>Expected Output</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Validate Required Fields</td>
+                        <td>Check if all required fields are present</td>
+                        <td>Returns true for complete data<br/>Returns false for missing fields</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Reject Negative Quantity</td>
+                        <td>Validation rejects negative quantity values</td>
+                        <td>Returns false for negative quantity</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Reject Negative Price</td>
+                        <td>Validation rejects negative price values</td>
+                        <td>Returns false for negative price</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Create Unique ID</td>
+                        <td>Generate unique listing ID on creation</td>
+                        <td>Listing has non-empty string ID</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Create Timestamp</td>
+                        <td>Add creation timestamp to listing</td>
+                        <td>Listing has valid ISO timestamp</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Preserve Crop Data</td>
+                        <td>All crop data fields are preserved in listing</td>
+                        <td>Category, crop, quantity, price match input</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Save to Empty Storage</td>
+                        <td>Save new listing when no existing data</td>
+                        <td>AsyncStorage contains array with 1 item</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Append to Existing</td>
+                        <td>Add new listing to existing listings</td>
+                        <td>AsyncStorage contains array with 2 items</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>AsyncStorage Integration</td>
+                        <td>Verify correct storage key and data format</td>
+                        <td>Uses 'cropListings' key with JSON array</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- My Listings Tests -->
+        <div class="test-file-section">
+            <h2>2. My Listings Component Tests</h2>
+            
+            <div class="metadata">
+                <p><strong>File Tested:</strong> app/my-listings.tsx</p>
+                <p><strong>Test File:</strong> app/__tests__/my-listings.test.ts</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Description</th>
+                        <th>Expected Output</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Load Listings</td>
+                        <td>Retrieve listings from AsyncStorage</td>
+                        <td>Returns array with 2 listings</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Empty State</td>
+                        <td>Handle case when no listings exist</td>
+                        <td>Returns empty array</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Corrupted Data</td>
+                        <td>Handle invalid JSON gracefully</td>
+                        <td>Returns empty array, logs error</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Delete by ID</td>
+                        <td>Remove a listing by its unique ID</td>
+                        <td>Array reduced from 2 to 1 item</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Delete Non-existent</td>
+                        <td>Attempt to delete ID that doesn't exist</td>
+                        <td>Array remains unchanged (2 items)</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Delete All Items</td>
+                        <td>Delete multiple listings sequentially</td>
+                        <td>Array becomes empty after all deletes</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Format Price</td>
+                        <td>Display price with currency symbol</td>
+                        <td>Returns '₹5000' for input '5000'</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Format Date</td>
+                        <td>Convert ISO timestamp to readable date</td>
+                        <td>Returns formatted date string</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Calculate Count</td>
+                        <td>Get total number of listings</td>
+                        <td>Returns 2 for test data</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Filter by Category</td>
+                        <td>Filter listings by crop category</td>
+                        <td>Returns 1 item for 'Vegetables'</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sort by Date</td>
+                        <td>Sort listings with newest first</td>
+                        <td>Apple (newer) before Tomato (older)</td>
+                        <td><span class="status-pass">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary">
+            <h2>Test Summary</h2>
+            <p><strong>Total Tests:</strong> 20</p>
+            <p><strong>Passed:</strong> 20</p>
+            <p><strong>Failed:</strong> 0</p>
+            <p><strong>Success Rate:</strong> 100%</p>
+            <p><strong>Execution Time:</strong> ~1.31 seconds</p>
+        </div>
+
+        <div class="footer">
+            <p>Report generated based on Vitest execution results</p>
+            <p>Digital Marketplace - Kisan Saathi Mobile Application</p>
+        </div>
+    </div>
+</body>
+</html>

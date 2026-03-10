@@ -1,0 +1,38 @@
+# Dependencies (EAS installs these itself)
+node_modules/
+
+# Expo / Metro caches
+.expo/
+.metro-health-check*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+web-build/
+coverage/
+
+# GENERATED NATIVE FOLDERS (VERY IMPORTANT)
+android/
+ios/
+
+# Git metadata
+.git/
+.gitignore
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local env / secrets
+.env*
+*.pem
+*.key
+*.keystore
+
+# Editors
+.vscode/
+.idea/
+.idea/
