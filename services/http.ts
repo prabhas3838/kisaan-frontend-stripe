@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export async function apiFetch<T>(
   url: string,
   options: RequestInit = {},
-  timeoutMs = 15000,
+  timeoutMs = 60000,
 ): Promise<T> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
